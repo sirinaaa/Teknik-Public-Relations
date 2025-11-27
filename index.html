@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SMKPJ Update - Weblog Resmi SMK Karya Pembangunan Pasirjambu</title>
-    <!-- Font for modern, clean look -->
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     
@@ -151,6 +150,14 @@
             background-color: #ffc94d;
             transform: translateY(-2px);
         }
+        
+        /* [FIXED INLINE STYLE] Sidebar button style */
+        .btn-sidebar-full {
+            display: block;
+            text-align: center;
+            margin-top: 15px;
+            padding: 10px 0 !important; /* Use !important if needed to override .btn-primary */
+        }
 
         /* MAIN CONTENT LAYOUT (NEWS & SIDEBAR) */
         .main-content {
@@ -209,6 +216,23 @@
             margin-bottom: 15px;
         }
 
+        .article-body ul {
+            list-style: none;
+            padding-left: 0;
+        }
+        .article-body li {
+            padding-left: 25px; /* Tambahkan padding untuk ikon */
+            position: relative;
+            margin-bottom: 8px;
+        }
+        /* [FIXED INLINE STYLE] Moving style from HTML to CSS */
+        .article-body li i {
+            position: absolute;
+            left: 0;
+            top: 5px;
+            color: var(--color-gold); 
+        }
+
         .quote-block {
             border-left: 5px solid var(--color-gold);
             padding-left: 15px;
@@ -234,6 +258,11 @@
             border-bottom: 2px solid var(--color-gold);
             padding-bottom: 5px;
             font-weight: 700;
+        }
+        
+        /* [FIXED INLINE STYLE] Sidebar Contact Icons */
+        .content-sidebar .sidebar-widget p i {
+            color: var(--color-gold);
         }
 
         .recent-post-item {
@@ -317,6 +346,89 @@
             left: 0;
             color: var(--color-gold);
         }
+
+        /* --- NEW: STRUKTUR ORGANISASI STYLES --- */
+        .structure-section {
+            padding: 60px 0;
+            text-align: center;
+            background-color: white;
+        }
+
+        .structure-section h2 {
+            font-size: 2rem;
+            color: var(--color-navy);
+            margin-bottom: 40px;
+            font-weight: 800;
+        }
+
+        .structure-chart {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+            padding-bottom: 20px;
+        }
+
+        .role-card {
+            background: var(--color-light);
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 15px 25px;
+            width: 100%;
+            max-width: 600px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+        }
+
+        .role-card.principal {
+            background-color: var(--color-navy);
+            color: white;
+            border-color: var(--color-gold);
+        }
+
+        .role-card.manager-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            max-width: 1200px; /* Wider for managers */
+            width: 100%;
+            margin-top: 20px;
+        }
+
+        .manager-item {
+            background-color: white;
+            padding: 15px;
+            border-radius: 6px;
+            border: 2px solid var(--color-gold);
+            text-align: left;
+        }
+
+        .manager-item h5 {
+            font-size: 0.9rem;
+            color: var(--color-navy);
+            margin-bottom: 5px;
+            font-weight: 700;
+        }
+
+        .manager-item p {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--color-text);
+        }
+
+        .staff-detail-list {
+            list-style: none;
+            padding: 10px 0 0 0;
+            text-align: left;
+            margin-top: 10px;
+            border-top: 1px dashed #e2e8f0;
+        }
+        .staff-detail-list li {
+            font-size: 0.9rem;
+            color: #64748b;
+            line-height: 1.4;
+        }
+        /* --- END NEW STYLES --- */
+
 
         /* GALLERY SECTION */
         .gallery {
@@ -442,6 +554,9 @@
             .vm-grid {
                 grid-template-columns: 1fr;
             }
+            .role-card.manager-list {
+                grid-template-columns: 1fr;
+            }
             .gallery-grid {
                 grid-template-columns: 1fr 1fr;
             }
@@ -485,39 +600,63 @@
 </head>
 <body>
 
-    <!-- 1. HEADER & NAVIGATION -->
     <header class="header">
         <div class="container navbar title-font">
             <div class="brand"><i class="fa-solid fa-graduation-cap"></i> SMKkerenpisan</div>
             <ul class="nav-links">
                 <li><a href="#beranda">Beranda</a></li>
                 <li><a href="#profil">Profil</a></li>
+                <li><a href="#bidang-usaha">TJKT</a></li> <li><a href="#struktur-organisasi">Struktur</a></li>
                 <li><a href="#berita">Berita</a></li>
                 <li><a href="#galeri">Galeri</a></li>
-                <li><a href="#" class="btn-ppdb">PPDB 2026/2027</a></li>
+                <li><a href="Tugas brosur.pdf" target="_blank">Info PPDB</a></li> <li><a href="https://wa.me/6282219599171?text=Halo%2C%20saya%20ingin%20mendaftar%20di%20SMK%20KP%20Pasirjambu.%20Mohon%20info%20pendaftaran%20PPDB%202026%2F2027." target="_blank" class="btn-ppdb">Daftar Sekarang</a></li>
             </ul>
         </div>
     </header>
 
-    <!-- 2. HERO SECTION -->
     <section id="beranda" class="hero title-font">
         <div class="container">
             <p class="hero-tagline">SMK Karya Pembangunan Pasirjambu | Tahun Ajaran 2026/2027</p>
-            <h1>Langkah Tepat, Untuk Masa Depan Hebat.</h1>
+            <h1>Langkah Tepat, Untuk Masa Depan Hebat</h1>
             <p class="hero-desc">
                 Bergabunglah bersama kami. Sekolah modern dengan Kurikulum Joyful Learning, Program Keahlian TJKT (Teknik Jaringan Komputer dan Telekomunikasi) berstandar industri, dan dukungan Beasiswa dari CV Ciwidey Food.
             </p>
             <div class="hero-buttons">
-                <a href="#" class="btn-primary">Daftar Sekarang</a>
+                <a href="https://wa.me/6282219599171?text=Halo%2C%20saya%20ingin%20mendaftar%20di%20SMK%20KP%20Pasirjambu.%20Mohon%20info%20pendaftaran%20PPDB%202026%2F2027." target="_blank" class="btn-primary">Daftar Sekarang</a>
+            </div>
+        </div>
+    </section>
+    
+    <section id="bidang-usaha" class="structure-section" style="background-color: white; padding: 60px 0;">
+        <div class="container">
+            <h2 class="title-font">Program Keahlian: TJKT - Teknik Jaringan Komputer dan Telekomunikasi</h2>
+            <p style="font-size: 1.1rem; color: var(--color-text); max-width: 900px; margin: 0 auto 40px auto;">
+                Kami fokus pada satu program keahlian unggulan, TJKT, yang dirancang untuk mempersiapkan siswa menjadi Ahli Jaringan Masa Depan. Masuk, coba, dan rasakan! Lab TJKT kami siap mengantarkanmu
+            </p>
+            
+            <div class="role-card manager-list" style="max-width: 1000px; margin-top: 0; box-shadow: none; border: none;">
+                
+                <div class="manager-item" style="border-color: var(--color-navy);">
+                    <h5><i class="fa-solid fa-hand-holding-dollar"></i> Beasiswa Penuh</h5>
+                    <p>Didukung oleh CV Ciwidey Food</p>
+                </div>
+
+                <div class="manager-item" style="border-color: var(--color-navy);">
+                    <h5><i class="fa-solid fa-book-open-reader"></i> Joyful Learning Tanpa PR</h5>
+                    <p>Belajar yang menyenangkan, kurikulum sesuai perkembangan zaman</p>
+                </div>
+
+                <div class="manager-item" style="border-color: var(--color-navy);">
+                    <h5><i class="fa-solid fa-shield-halved"></i> Pendidikan Karakter</h5>
+                    <p>Aturan tanpa hukuman, bebas bullying/senioritas, pendekatan psikologi remaja</p>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- 3. MAIN CONTENT (NEWS & SIDEBAR) -->
     <section id="berita" class="main-content">
         <div class="container content-layout">
             
-            <!-- Main Article Area -->
             <main class="content-main">
                 <div class="article-card">
                     <div class="article-header title-font">
@@ -530,14 +669,13 @@
                     </div>
                     
                     <div class="article-image">
-                        <!-- Placeholder Image URL for "Kepala Sekolah Presentasi MBS" -->
                         <img src="pakuus.jpg" alt="Kepala Sekolah Presentasi MBS">
                     </div>
 
                     <div class="article-body">
                         <p><strong>PASIRJAMBU</strong> – SMK Karya Pembangunan Pasirjambu kembali menegaskan komitmennya sebagai sekolah vokasi unggul. Sejak menerapkan Sistem Manajemen Berbasis Sekolah (MBS), sekolah ini berhasil mencatatkan peningkatan kinerja yang signifikan, baik dari aspek akademik, non-akademik, maupun manajerial dalam lima tahun terakhir.</p>
                         
-                        <p>Kepala Sekolah, Drs. Uus Sutrisno, menjelaskan bahwa MBS diimplementasikan melalui delapan pilar manajemen utama yang dijalankan secara mandiri, meliputi Curriculum Management hingga Marketing Management.</p>
+                        <p>Drs. Uus Sutrisno, yang saat itu menjabat Kepala Sekolah, menjelaskan bahwa MBS diimplementasikan melalui delapan pilar manajemen utama yang dijalankan secara mandiri, meliputi Curriculum Management hingga Marketing Management.</p>
                         
                         <div class="quote-block">
                             "Tujuan kami sederhana: menjadikan SMK KP Pasirjambu bukan hanya tempat belajar, tetapi juga ruang hidup yang menumbuhkan semangat, karakter, dan mentalitas profesional bagi siswa. Dengan MBS, setiap elemen sekolah memiliki tanggung jawab yang terukur dan jelas terhadap pencapaian visi," ujar Drs. Uus Sutrisno.
@@ -546,22 +684,20 @@
                         <h3>Bukti Nyata Peningkatan Kinerja</h3>
                         <p>Hasil evaluasi menunjukkan dampak positif MBS yang luar biasa:</p>
                         <ul>
-                            <li><i class="fa-solid fa-check" style="color: var(--color-gold);"></i> Peningkatan Semangat Belajar: Persentase siswa yang mengaku senang belajar di sekolah meningkat tajam hingga 70,9%.</li>
-                            <li><i class="fa-solid fa-check" style="color: var(--color-gold);"></i> Kesiapan Kerja Alumni:Jumlah alumni yang sukses terserap di dunia industri mengalami lonjakan dari 23,09% menjadi 70,05%.</li>
-                            <li><i class="fa-solid fa-check" style="color: var(--color-gold);"></i> Kepercayaan Masyarakat: Tingkat pendaftar baru naik hingga 163% dibanding periode sebelum penerapan sistem manajemen ini.</li>
-                        </ul>
+                            <li><i class="fa-solid fa-check"></i> Peningkatan Semangat Belajar: Persentase siswa yang mengaku senang belajar di sekolah meningkat tajam hingga 70,9%.</li> <li><i class="fa-solid fa-check"></i> Kesiapan Kerja Alumni:Jumlah alumni yang sukses terserap di dunia industri mengalami lonjakan dari 23,09% menjadi 70,05%.</li> <li><i class="fa-solid fa-check"></i> Kepercayaan Masyarakat: Tingkat pendaftar baru naik hingga 163% dibanding periode sebelum penerapan sistem manajemen ini.</li> </ul>
                         
                         <p>SMK Karya Pembangunan Pasirjambu bertekad mewujudkan visinya, yaitu "Menciptakan sumber daya manusia profesional, berkarya, dan berkarakter bangsa," dengan terus melakukan inovasi sistem setiap enam bulan sekali. Sekolah ini siap menjadi pusat sumber daya masyarakat yang menjamin keberhasilan masa depan siswa di dunia kerja.</p>
                     </div>
                 </div>
             </main>
 
-            <!-- Sidebar Area -->
             <aside class="content-sidebar">
                 <div class="sidebar-widget">
                     <h4 class="title-font">Info PPDB Terbaru</h4>
-                    <p style="font-size: 0.9rem;">Pendaftaran Gelombang 1 Dibuka: 1 Agustus - 30 Desember 2025. Jangan lewatkan kesempatan mendapatkan Beasiswa Pendidikan dari CV Ciwidey Food!</p>
-                    <a href="#" class="btn-primary" style="display: block; text-align: center; margin-top: 15px; padding: 10px 0;">Daftar Sekarang!</a>
+                    <a href="Tugas Humas, Brosur.pdf" target="_blank" style="text-decoration: none; color: inherit; display: block;"> <p style="font-size: 0.9rem; margin-bottom: 5px;">Pendaftaran Gelombang 1 Dibuka: 1 Agustus - 30 Desember 2025. Jangan lewatkan kesempatan mendapatkan Beasiswa Pendidikan dari CV Ciwidey Food!</p>
+                        <p style="font-size: 0.8rem; color: var(--color-gold); font-weight: 700; text-align: center;">[KLIK DI SINI UNTUK LIHAT BROSUR]</p>
+                    </a>
+                    <a href="https://wa.me/6282219599171?text=Halo%2C%20saya%20ingin%20mendaftar%20di%20SMK%20KP%20Pasirjambu.%20Mohon%20info%20pendaftaran%20PPDB%202026%2F2027." target="_blank" class="btn-primary btn-sidebar-full">Daftar Sekarang!</a>
                 </div>
 
                 <div class="sidebar-widget">
@@ -574,15 +710,12 @@
                 <div class="sidebar-widget">
                     <h4 class="title-font">Hubungi Kami</h4>
                     <p style="font-size: 0.9rem;">
-                        <i class="fa-solid fa-phone" style="color: var(--color-gold);"></i> 0821-1956-9171<br>
-                        <i class="fa-solid fa-envelope" style="color: var(--color-gold);"></i> humas.smkpaspjb@gmail.com
-                    </p>
+                        <i class="fa-solid fa-phone"></i> 0821-1956-9171<br> <i class="fa-solid fa-envelope"></i> humas.smkpaspjb@gmail.com </p>
                 </div>
             </aside>
         </div>
     </section>
     
-    <!-- 4. VISI MISI SECTION -->
     <section id="profil" class="vision-mission title-font">
         <div class="container">
             <h2>Visi & Misi SMK Karya Pembangunan Pasirjambu</h2>
@@ -596,7 +729,7 @@
                 <div class="vm-card-m">
                     <h3><i class="fa-solid fa-list-check"></i> Misi Utama</h3>
                     <ul>
-                        <li>Mewujudkan peserta didik yang Bahagia dalam belajar (Joyful Learning) dan siap merancang masa depan.</li>
+                        <li>Mewujudkan peserta didik yang Bahagia dalam belajar (Joyful Learning) dan siap merancang masa depan[cite: 24, 39].</li>
                         <li>Membangun tenaga pendidik dan kependidikan yang professional.</li>
                         <li>Membangun hubungan kerjasama dengan pihak eksternal untuk menyukseskan proses pendidikan.</li>
                         <li>Menyediakan sarana dan prasarana pendukung proses pendidikan modern.</li>
@@ -607,15 +740,82 @@
         </div>
     </section>
 
-    <!-- 5. GALLERY SECTION -->
+    <section id="struktur-organisasi" class="structure-section title-font">
+        <div class="container">
+            <h2>Struktur Organisasi SMK KP Pasirjambu</h2>
+
+            <div class="structure-chart">
+                
+                <div class="role-card principal">
+                    <h3>Principal (Kepala Sekolah)</h3>
+                    <p style="font-size: 1.2rem; font-weight: 700;">Asep Maktal Rosada S.Si.Gr. </p>
+                    <p style="font-weight: 400; font-size: 0.9rem; margin-top: 5px;">Sekretaris: Depa Nugraha </p>
+                </div>
+                
+                <i class="fa-solid fa-arrow-down" style="color: var(--color-gold); font-size: 1.5rem;"></i>
+
+                <div class="role-card">
+                    <h4 style="color: var(--color-navy); font-size: 1.3rem;">General Management (GM)</h4>
+                    <p style="font-weight: 600;">Annisa Firdausi, S.Pd. </p>
+                    <p style="font-weight: 400; font-size: 0.9rem; margin-top: 5px;">Sekretaris: Wulan </p>
+                </div>
+
+                <i class="fa-solid fa-arrow-down" style="color: var(--color-gold); font-size: 1.5rem;"></i>
+
+                <div class="role-card manager-list">
+                    
+                    <div class="manager-item">
+                        <h5><i class="fa-solid fa-book-open-reader"></i> Learning Management</h5>
+                        <p>Dania Ajahra, S.Pd.</p>
+                        <ul class="staff-detail-list">
+                            <li>Staff: Annisa Levinia Putri</li>
+                        </ul>
+                    </div>
+
+                    <div class="manager-item">
+                        <h5><i class="fa-solid fa-user-graduate"></i> Student Management</h5>
+                        <p>Sri Rahayu P. S.Pd.</p>
+                        <ul class="staff-detail-list">
+                            <li>Staff: Riska Yulia, Sri Novianti, Riska Nur Azizah</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="manager-item">
+                        <h5><i class="fa-solid fa-screwdriver-wrench"></i> Operations Management</h5>
+                        <p>Nanang Sumarna</p>
+                        <ul class="staff-detail-list">
+                            <li>Staff: Topan Gilang, Raka Ahmad D, Aulia Putri Riani</li>
+                        </ul>
+                    </div>
+
+                    <div class="manager-item">
+                        <h5><i class="fa-solid fa-bullhorn"></i> Marketing Management</h5>
+                        <p>Rina Nurhayati</p>
+                    </div>
+                    
+                    <div class="manager-item">
+                        <h5><i class="fa-solid fa-building-columns"></i> Government Management</h5>
+                        <p>Aris Risnandar, S.Pd.</p>
+                    </div>
+
+                    <div class="manager-item">
+                        <h5><i class="fa-solid fa-file-invoice"></i> Workforce & Office Documentation Management (WOD)</h5>
+                        <p>Ai Komariah, S.Kom.</p>
+                        <ul class="staff-detail-list">
+                            <li>Staff: Azizah Nur Avrialiani</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
     <section id="galeri" class="gallery">
         <div class="container">
             <h2 class="title-font">Galeri Program Unggulan</h2>
             <div class="gallery-grid">
                 
-                <!-- Featured Item: TJKT Lab -->
                 <div class="gallery-item feature">
-                    <!-- Placeholder Image URL for "Lab TJKT" -->
                     <img src="Lab.jpg" alt="Lab TJKT">
                     <div class="gallery-overlay">
                         <h3>Fasilitas TJKT Modern</h3>
@@ -623,31 +823,27 @@
                     </div>
                 </div>
                 
-                <!-- Side Item 1: Beasiswa -->
                 <div class="gallery-item" style="min-height: auto;">
                     <div class="beasiswa-box">
                         <i class="fa-solid fa-hand-holding-dollar"></i>
                         <h4 class="title-font">Beasiswa Pendidikan</h4>
-                        <p>Disupport penuh oleh unit usaha sekolah, CV Ciwidey Food.</p>
+                        <p>Disupport penuh oleh unit usaha sekolah, CV Ciwidey Food</p>
                     </div>
                 </div>
 
-                <!-- Side Item 2: Joyful Learning -->
                 <div class="gallery-item">
-                    <!-- Placeholder Image URL for "Joyful Learning" -->
                     <img src="joyfull.jpg" alt="Kegiatan Siswa">
                     <div class="gallery-overlay">
                         <h3>Joyful Learning</h3>
-                        <p>Belajar yang menyenangkan, tanpa PR, dengan kurikulum sesuai perkembangan zaman.</p>
+                        <p>Belajar yang menyenangkan, tanpa PR, dengan kurikulum sesuai perkembangan zaman[cite: 24, 39].</p>
                     </div>
                 </div>
                 
-                <!-- Side Item 3: Karakter Bangsa -->
                 <div class="gallery-item">
                     <img src="aturan.jpg" alt="Pendidikan Karakter">
                     <div class="gallery-overlay">
                         <h3>Pendidikan Karakter</h3>
-                        <p>Aturan tanpa hukuman, bebas bullying, dan pendekatan psikologi remaja.</p>
+                        <p>Aturan tanpa hukuman, bebas bullying, dan pendekatan psikologi remaja</p>
                     </div>
                 </div>
                 
@@ -655,7 +851,6 @@
         </div>
     </section>
 
-    <!-- 6. FOOTER -->
     <footer class="footer">
         <div class="container footer-content">
             <div class="footer-info">
@@ -668,5 +863,4 @@
     </footer>
 
 </body>
-
 </html>
