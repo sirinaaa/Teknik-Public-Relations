@@ -1,0 +1,671 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SMKPJ Update - Weblog Resmi SMK Karya Pembangunan Pasirjambu</title>
+    <!-- Font for modern, clean look -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <style>
+        /* BASE STYLES & RESET */
+        :root {
+            --color-navy: #0a192f;
+            --color-gold: #fbbf24;
+            --color-text: #334155;
+            --color-light: #f8fafc;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Open Sans', sans-serif;
+            line-height: 1.6;
+            color: var(--color-text);
+            background-color: var(--color-light);
+        }
+        
+        a {
+            text-decoration: none;
+            color: var(--color-navy);
+        }
+
+        /* UTILITY CLASSES */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .title-font {
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        /* HEADER & NAVIGATION */
+        .header {
+            background-color: var(--color-navy);
+            color: white;
+            padding: 15px 0;
+            border-bottom: 5px solid var(--color-gold);
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .brand {
+            font-size: 24px;
+            font-weight: 800;
+            color: white;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .brand i {
+            color: var(--color-gold);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 25px;
+            list-style: none;
+            padding-top: 5px;
+        }
+
+        .nav-links a {
+            color: #e2e8f0;
+            font-weight: 600;
+            position: relative;
+            padding-bottom: 5px;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover {
+            color: var(--color-gold);
+        }
+
+        .nav-links a.btn-ppdb {
+            background-color: var(--color-gold);
+            color: var(--color-navy);
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 700;
+            margin-top: -5px;
+        }
+        
+        /* HERO SECTION */
+        .hero {
+            background-color: white;
+            padding: 80px 0;
+            text-align: center;
+        }
+
+        .hero-tagline {
+            color: var(--color-gold);
+            font-weight: 700;
+            letter-spacing: 2px;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            color: var(--color-navy);
+            margin-bottom: 20px;
+            font-weight: 800;
+            line-height: 1.1;
+        }
+
+        .hero-desc {
+            font-size: 1.1rem;
+            max-width: 800px;
+            margin: 0 auto 30px auto;
+        }
+
+        .hero-buttons a {
+            margin: 0 10px;
+            padding: 12px 30px;
+            border-radius: 30px;
+            font-weight: 700;
+            display: inline-block;
+            transition: background-color 0.3s, transform 0.2s;
+        }
+
+        .btn-primary {
+            background-color: var(--color-gold);
+            color: var(--color-navy);
+            box-shadow: 0 8px 15px rgba(251, 191, 36, 0.3);
+        }
+        
+        .btn-primary:hover {
+            background-color: #ffc94d;
+            transform: translateY(-2px);
+        }
+
+        /* MAIN CONTENT LAYOUT (NEWS & SIDEBAR) */
+        .main-content {
+            padding: 40px 0;
+        }
+
+        .content-layout {
+            display: grid;
+            grid-template-columns: 3fr 1fr; /* 3:1 ratio for content and sidebar */
+            gap: 40px;
+        }
+
+        /* ARTICLE STYLES */
+        .article-card {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            margin-bottom: 40px;
+        }
+
+        .article-header h2 {
+            font-size: 2rem;
+            color: var(--color-navy);
+            margin-bottom: 15px;
+            font-weight: 700;
+            line-height: 1.3;
+        }
+
+        .article-meta {
+            font-size: 0.9rem;
+            color: #64748b;
+            margin-bottom: 20px;
+        }
+        
+        .article-meta i {
+            margin-right: 5px;
+            color: var(--color-gold);
+        }
+
+        .article-image {
+            width: 100%;
+            height: 350px;
+            overflow: hidden;
+            border-radius: 8px;
+            margin-bottom: 25px;
+        }
+        
+        .article-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .article-body p {
+            margin-bottom: 15px;
+        }
+
+        .quote-block {
+            border-left: 5px solid var(--color-gold);
+            padding-left: 15px;
+            margin: 25px 0;
+            font-style: italic;
+            color: var(--color-navy);
+            font-weight: 600;
+        }
+
+        /* SIDEBAR STYLES */
+        .sidebar-widget {
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+            box-shadow: 0 1px 5px rgba(0,0,0,0.05);
+        }
+
+        .sidebar-widget h4 {
+            font-size: 1.1rem;
+            color: var(--color-navy);
+            margin-bottom: 15px;
+            border-bottom: 2px solid var(--color-gold);
+            padding-bottom: 5px;
+            font-weight: 700;
+        }
+
+        .recent-post-item {
+            padding: 10px 0;
+            border-bottom: 1px dashed #e2e8f0;
+        }
+        
+        .recent-post-item:last-child {
+            border-bottom: none;
+        }
+
+        .recent-post-item a {
+            font-size: 0.95rem;
+            font-weight: 600;
+            display: block;
+            color: var(--color-text);
+        }
+
+        /* Visi Misi Section */
+        .vision-mission {
+            background-color: var(--color-navy);
+            color: white;
+            padding: 60px 0;
+            text-align: center;
+        }
+        
+        .vision-mission h2 {
+            font-size: 2rem;
+            color: var(--color-gold);
+            margin-bottom: 40px;
+            font-weight: 800;
+        }
+
+        .vm-grid {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 40px;
+            text-align: left;
+        }
+
+        .vm-card-v {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 30px;
+            border-radius: 8px;
+            border-left: 5px solid var(--color-gold);
+        }
+        
+        .vm-card-v h3 {
+            color: var(--color-gold);
+            margin-bottom: 15px;
+        }
+        
+        .vm-card-v p {
+            font-size: 1.3rem;
+            font-weight: 600;
+            line-height: 1.4;
+        }
+
+        .vm-card-m h3 {
+            color: var(--color-gold);
+            margin-bottom: 15px;
+        }
+        
+        .vm-card-m ul {
+            list-style: none;
+        }
+        
+        .vm-card-m li {
+            margin-bottom: 12px;
+            padding-left: 30px;
+            position: relative;
+            font-size: 1rem;
+            color: #e2e8f0;
+        }
+        
+        .vm-card-m li::before {
+            content: "\f00c"; /* Font Awesome checkmark */
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            position: absolute;
+            left: 0;
+            color: var(--color-gold);
+        }
+
+        /* GALLERY SECTION */
+        .gallery {
+            padding: 60px 0;
+            text-align: center;
+        }
+        
+        .gallery h2 {
+            font-size: 2rem;
+            color: var(--color-navy);
+            margin-bottom: 40px;
+            font-weight: 800;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+        
+        .gallery-item {
+            border-radius: 8px;
+            overflow: hidden;
+            position: relative;
+            background-color: #ddd;
+            min-height: 250px;
+            transition: transform 0.3s;
+        }
+        
+        .gallery-item:hover {
+            transform: scale(1.02);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+        
+        .gallery-item.feature {
+            grid-column: span 2;
+        }
+        
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+        
+        .gallery-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+            padding: 20px;
+            color: white;
+            text-align: left;
+        }
+        
+        .gallery-overlay h3 {
+            font-size: 1.1rem;
+            margin-bottom: 5px;
+        }
+        
+        .beasiswa-box {
+            background-color: var(--color-navy);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 30px;
+            text-align: center;
+            height: 100%;
+        }
+        
+        .beasiswa-box i {
+            font-size: 3rem;
+            color: var(--color-gold);
+            margin-bottom: 15px;
+        }
+        
+        .beasiswa-box h4 {
+            color: white;
+            font-family: 'Montserrat';
+            margin-bottom: 10px;
+        }
+        
+        .beasiswa-box p {
+            color: #e2e8f0;
+            font-size: 0.9rem;
+        }
+
+
+        /* FOOTER */
+        .footer {
+            background-color: var(--color-navy);
+            color: #94a3b8;
+            padding: 30px 0;
+            font-size: 0.9rem;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .footer-info, .footer-contact {
+            padding: 10px 0;
+        }
+        
+        .footer-contact i {
+            margin-right: 8px;
+            color: var(--color-gold);
+        }
+
+        /* RESPONSIVENESS */
+        @media (max-width: 1024px) {
+            .content-layout {
+                grid-template-columns: 1fr; /* Single column layout for smaller screens */
+            }
+            .content-sidebar {
+                order: -1; /* Sidebar moves to top on mobile */
+            }
+            .vm-grid {
+                grid-template-columns: 1fr;
+            }
+            .gallery-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+            .gallery-item.feature {
+                grid-column: span 2;
+            }
+            .footer-content {
+                flex-direction: column;
+                text-align: center;
+                gap: 10px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            .navbar {
+                flex-direction: column;
+                gap: 15px;
+            }
+            .nav-links {
+                justify-content: center;
+                gap: 15px;
+                flex-wrap: wrap;
+            }
+            .nav-links a.btn-ppdb {
+                margin-top: 0;
+            }
+            .vm-card-v p {
+                font-size: 1.1rem;
+            }
+            .gallery-grid {
+                grid-template-columns: 1fr;
+            }
+            .gallery-item.feature {
+                grid-column: span 1;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 1. HEADER & NAVIGATION -->
+    <header class="header">
+        <div class="container navbar title-font">
+            <div class="brand"><i class="fa-solid fa-graduation-cap"></i> SMKkerenpisan</div>
+            <ul class="nav-links">
+                <li><a href="#beranda">Beranda</a></li>
+                <li><a href="#profil">Profil</a></li>
+                <li><a href="#berita">Berita</a></li>
+                <li><a href="#galeri">Galeri</a></li>
+                <li><a href="#" class="btn-ppdb">PPDB 2026/2027</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <!-- 2. HERO SECTION -->
+    <section id="beranda" class="hero title-font">
+        <div class="container">
+            <p class="hero-tagline">SMK Karya Pembangunan Pasirjambu | Tahun Ajaran 2026/2027</p>
+            <h1>Langkah Tepat, Untuk Masa Depan Hebat.</h1>
+            <p class="hero-desc">
+                Bergabunglah bersama kami. Sekolah modern dengan Kurikulum Joyful Learning, Program Keahlian TJKT (Teknik Jaringan Komputer dan Telekomunikasi) berstandar industri, dan dukungan Beasiswa dari CV Ciwidey Food.
+            </p>
+            <div class="hero-buttons">
+                <a href="#" class="btn-primary">Daftar Sekarang</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. MAIN CONTENT (NEWS & SIDEBAR) -->
+    <section id="berita" class="main-content">
+        <div class="container content-layout">
+            
+            <!-- Main Article Area -->
+            <main class="content-main">
+                <div class="article-card">
+                    <div class="article-header title-font">
+                        <h2>SMK KP Pasirjambu Tingkatkan Kinerja Melalui Manajemen Berbasis Sekolah (MBS)</h2>
+                        <div class="article-meta">
+                            <span><i class="fa-solid fa-user"></i> Humas SMKPJ</span>
+                            <span><i class="fa-solid fa-calendar"></i> 27 Oktober 2025</span>
+                            <span><i class="fa-solid fa-tag"></i> Berita Sekolah</span>
+                        </div>
+                    </div>
+                    
+                    <div class="article-image">
+                        <!-- Placeholder Image URL for "Kepala Sekolah Presentasi MBS" -->
+                        <img src="pakuus.jpg" alt="Kepala Sekolah Presentasi MBS">
+                    </div>
+
+                    <div class="article-body">
+                        <p><strong>PASIRJAMBU</strong> – SMK Karya Pembangunan Pasirjambu kembali menegaskan komitmennya sebagai sekolah vokasi unggul. Sejak menerapkan Sistem Manajemen Berbasis Sekolah (MBS), sekolah ini berhasil mencatatkan peningkatan kinerja yang signifikan, baik dari aspek akademik, non-akademik, maupun manajerial dalam lima tahun terakhir.</p>
+                        
+                        <p>Kepala Sekolah, Drs. Uus Sutrisno, menjelaskan bahwa MBS diimplementasikan melalui delapan pilar manajemen utama yang dijalankan secara mandiri, meliputi Curriculum Management hingga Marketing Management.</p>
+                        
+                        <div class="quote-block">
+                            "Tujuan kami sederhana: menjadikan SMK KP Pasirjambu bukan hanya tempat belajar, tetapi juga ruang hidup yang menumbuhkan semangat, karakter, dan mentalitas profesional bagi siswa. Dengan MBS, setiap elemen sekolah memiliki tanggung jawab yang terukur dan jelas terhadap pencapaian visi," ujar Drs. Uus Sutrisno.
+                        </div>
+
+                        <h3>Bukti Nyata Peningkatan Kinerja</h3>
+                        <p>Hasil evaluasi menunjukkan dampak positif MBS yang luar biasa:</p>
+                        <ul>
+                            <li><i class="fa-solid fa-check" style="color: var(--color-gold);"></i> Peningkatan Semangat Belajar: Persentase siswa yang mengaku senang belajar di sekolah meningkat tajam hingga 70,9%.</li>
+                            <li><i class="fa-solid fa-check" style="color: var(--color-gold);"></i> Kesiapan Kerja Alumni:Jumlah alumni yang sukses terserap di dunia industri mengalami lonjakan dari 23,09% menjadi 70,05%.</li>
+                            <li><i class="fa-solid fa-check" style="color: var(--color-gold);"></i> Kepercayaan Masyarakat: Tingkat pendaftar baru naik hingga 163% dibanding periode sebelum penerapan sistem manajemen ini.</li>
+                        </ul>
+                        
+                        <p>SMK Karya Pembangunan Pasirjambu bertekad mewujudkan visinya, yaitu "Menciptakan sumber daya manusia profesional, berkarya, dan berkarakter bangsa," dengan terus melakukan inovasi sistem setiap enam bulan sekali. Sekolah ini siap menjadi pusat sumber daya masyarakat yang menjamin keberhasilan masa depan siswa di dunia kerja.</p>
+                    </div>
+                </div>
+            </main>
+
+            <!-- Sidebar Area -->
+            <aside class="content-sidebar">
+                <div class="sidebar-widget">
+                    <h4 class="title-font">Info PPDB Terbaru</h4>
+                    <p style="font-size: 0.9rem;">Pendaftaran Gelombang 1 Dibuka: 1 Agustus - 30 Desember 2025. Jangan lewatkan kesempatan mendapatkan Beasiswa Pendidikan dari CV Ciwidey Food!</p>
+                    <a href="#" class="btn-primary" style="display: block; text-align: center; margin-top: 15px; padding: 10px 0;">Daftar Sekarang!</a>
+                </div>
+
+                <div class="sidebar-widget">
+                    <h4 class="title-font">Berita Populer</h4>
+                    <div class="recent-post-item"><a href="#">Pendaftaran PPDB Gelombang 1 Dibuka</a></div>
+                    <div class="recent-post-item"><a href="#">Keren! Lab TJKT Dapat Perangkat Baru</a></div>
+                    <div class="recent-post-item"><a href="#">Penerapan Aturan Tanpa Hukuman di Sekolah</a></div>
+                </div>
+                
+                <div class="sidebar-widget">
+                    <h4 class="title-font">Hubungi Kami</h4>
+                    <p style="font-size: 0.9rem;">
+                        <i class="fa-solid fa-phone" style="color: var(--color-gold);"></i> 0821-1956-9171<br>
+                        <i class="fa-solid fa-envelope" style="color: var(--color-gold);"></i> humas.smkpaspjb@gmail.com
+                    </p>
+                </div>
+            </aside>
+        </div>
+    </section>
+    
+    <!-- 4. VISI MISI SECTION -->
+    <section id="profil" class="vision-mission title-font">
+        <div class="container">
+            <h2>Visi & Misi SMK Karya Pembangunan Pasirjambu</h2>
+            <div class="vm-grid">
+                <div class="vm-card-v">
+                    <h3><i class="fa-solid fa-eye"></i> Visi Kami</h3>
+                    <p>
+                        "Mewujudkan SMK yang mampu menciptakan sumber daya manusia profesional, berkarya dan berkarakter bangsa."
+                    </p>
+                </div>
+                <div class="vm-card-m">
+                    <h3><i class="fa-solid fa-list-check"></i> Misi Utama</h3>
+                    <ul>
+                        <li>Mewujudkan peserta didik yang Bahagia dalam belajar (Joyful Learning) dan siap merancang masa depan.</li>
+                        <li>Membangun tenaga pendidik dan kependidikan yang professional.</li>
+                        <li>Membangun hubungan kerjasama dengan pihak eksternal untuk menyukseskan proses pendidikan.</li>
+                        <li>Menyediakan sarana dan prasarana pendukung proses pendidikan modern.</li>
+                        <li>Menumbuhkan tingkat kepercayaan masyarakat terhadap SMK Karya Pembangunan Pasirjambu.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. GALLERY SECTION -->
+    <section id="galeri" class="gallery">
+        <div class="container">
+            <h2 class="title-font">Galeri Program Unggulan</h2>
+            <div class="gallery-grid">
+                
+                <!-- Featured Item: TJKT Lab -->
+                <div class="gallery-item feature">
+                    <!-- Placeholder Image URL for "Lab TJKT" -->
+                    <img src="Lab.jpg" alt="Lab TJKT">
+                    <div class="gallery-overlay">
+                        <h3>Fasilitas TJKT Modern</h3>
+                        <p>Laboratorium Teknik Jaringan Komputer dan Telekomunikasi berstandar industri untuk siswa yang melek teknologi.</p>
+                    </div>
+                </div>
+                
+                <!-- Side Item 1: Beasiswa -->
+                <div class="gallery-item" style="min-height: auto;">
+                    <div class="beasiswa-box">
+                        <i class="fa-solid fa-hand-holding-dollar"></i>
+                        <h4 class="title-font">Beasiswa Pendidikan</h4>
+                        <p>Disupport penuh oleh unit usaha sekolah, CV Ciwidey Food.</p>
+                    </div>
+                </div>
+
+                <!-- Side Item 2: Joyful Learning -->
+                <div class="gallery-item">
+                    <!-- Placeholder Image URL for "Joyful Learning" -->
+                    <img src="joyfull.jpg" alt="Kegiatan Siswa">
+                    <div class="gallery-overlay">
+                        <h3>Joyful Learning</h3>
+                        <p>Belajar yang menyenangkan, tanpa PR, dengan kurikulum sesuai perkembangan zaman.</p>
+                    </div>
+                </div>
+                
+                <!-- Side Item 3: Karakter Bangsa -->
+                <div class="gallery-item">
+                    <img src="aturan.jpg" alt="Pendidikan Karakter">
+                    <div class="gallery-overlay">
+                        <h3>Pendidikan Karakter</h3>
+                        <p>Aturan tanpa hukuman, bebas bullying, dan pendekatan psikologi remaja.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </section>
+
+    <!-- 6. FOOTER -->
+    <footer class="footer">
+        <div class="container footer-content">
+            <div class="footer-info">
+                © 2025 SMK Karya Pembangunan Pasirjambu. All Rights Reserved.
+            </div>
+            <div class="footer-contact">
+                Jl. Raya Sukarasa No. 160 Pasirjambu Kab. Bandung
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
